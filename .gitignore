@@ -1,0 +1,5 @@
+*.zip
+.ipynb_checkpoints
+__pycache__
+CNRPark-Patches-150x150
+model_data/yolo.h5
