@@ -3,7 +3,6 @@ import imghdr
 import os
 import random
 from keras import backend as K
-
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
@@ -43,9 +42,9 @@ def preprocess_image(img_path, model_image_size):
     print(image_type)
     image = Image.open(img_path)
     #plt.imshow(np.array(temp)[:,:,:3])
-    
+
     resized_image = image.resize(tuple(reversed(model_image_size)), Image.BICUBIC)
-    
+
     image_data = np.array(resized_image, dtype= np.float32 )
     image_data = image_data[:,:,:3]
     image_data /= 255.
@@ -53,7 +52,7 @@ def preprocess_image(img_path, model_image_size):
     return image, image_data
 
 def draw_boxes(image, out_scores, out_boxes, out_classes, class_names, colors):
-    
+
     font = ImageFont.truetype(font='font/FiraMono-Medium.otf',size=np.floor(3e-2 * image.size[1] + 0.5).astype('int32'))
     thickness = (image.size[0] + image.size[1]) // 300
 
